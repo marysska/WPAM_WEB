@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch } from 'react-router-dom'
+import {BrowserRouter as Router, Switch , Route} from 'react-router-dom'
 
 import './App.css';
 import themeFile from './utils/theme';
@@ -18,6 +18,8 @@ import AuthRoute from './utils/AuthRoute.js'
 // Pages
 import home from './pages/home';
 import login from './pages/login';
+import users from './pages/users';
+import groups from './pages/groups';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -52,7 +54,8 @@ function App() {
           <Navbar/>
             <div className = "container">
               <Switch>
-
+                <Route path ="/users" component ={users}/>
+                <Route path ="/groups" component ={groups}/>
                 <AuthRoute exact path="/" component={login} />
                 <AuthRoute exact path="/home" component={home}/>
               </Switch>

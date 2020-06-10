@@ -50,7 +50,7 @@ class login extends Component {
       };
     
     render() {
-        const {classes,   UI: { loading }, authenticated} = this.props;
+        const {classes,   UI: { loading }, authenticated, history = []} = this.props;
         
         const {errors} = this.state;
         if(authenticated === true ){

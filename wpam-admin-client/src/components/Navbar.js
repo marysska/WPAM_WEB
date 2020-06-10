@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { logoutUser } from '../redux/actions/userAction';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 export class Navbar extends Component {
     handleLogout = () => {
@@ -14,18 +15,29 @@ export class Navbar extends Component {
 
     render() {
         const { authenticated } = this.props;
-  
-        return (
+        if(authenticated === false ){
+          return (
             <AppBar position = "fixed">
-                <Toolbar className = "nav-container">
-                {authenticated ? (
-                   <Button onClick={this.handleLogout}>Wyloguj się</Button>         
-            ) : 
-                    <h3>Hell Yeeeah Pole Dance Studio</h3>
-    }
-                </Toolbar>
+            <Toolbar className = "nav-container">
+<h3>Hell Yeeeah Pole Dance Studio</h3>
+</Toolbar>
             </AppBar>
-        )
+          )
+        }else{
+          return(
+            <AppBar position = "fixed">
+            <Toolbar className = "nav-container">
+            <Button onClick={this.handleLogout}>Wyloguj się</Button>   
+            <Button color="inherit" component={Link} to="/home">
+                Home
+              </Button>    
+              <Button color="inherit" component={Link} to="/groups">
+                Zarządzaj grupami
+              </Button>  
+</Toolbar>
+            </AppBar>
+          )
+        }
     }
 }
 
